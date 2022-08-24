@@ -29,6 +29,7 @@ INSTALLED_APPS = [
 
     # Local
     'lettings',
+    'profiles',
 ]
 
 MIDDLEWARE = [
