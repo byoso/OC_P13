@@ -1,6 +1,6 @@
-import lettings
-import profiles
-import oc_lettings_site
+# import lettings
+# import profiles
+# import oc_lettings_site
 
 """WARNING: DO NOT RUN THIS SCRIPT (it has already be done)
 Some datas will be doubled, this is probably not what you want.
