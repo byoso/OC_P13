@@ -51,9 +51,9 @@ workflows:
     jobs:
       - build-and-test
       - docker-build-and-push:
-        filters:
-          branches:
-            only:
-              - master
-        requires:
-          - build-and-test
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - build-and-test
