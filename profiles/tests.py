@@ -30,6 +30,7 @@ def test_profiles_profile():
         favorite_city="my favorite city"
     )
     profile = Profile.objects.all()[0]
+    assert profile.user.username == "testuser"
     response = client.get(reverse('profiles:profile', kwargs={"username": "testuser"}))
     content = response.content.decode("utf-8")
     assert "testuser" in content
