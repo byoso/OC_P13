@@ -38,9 +38,11 @@ jobs:
       - image: cimg/python:3.10.2
     steps:
       - checkout
+      # - setup_remote_docker:
+      #     docker_layer_caching: true
       - run:
         name: test
-        command: echo 'just a test'
+        command: echo "just a test"
 
 
 # See workflow: https://circleci.com/docs/2.0/configuration-reference/#workflows
