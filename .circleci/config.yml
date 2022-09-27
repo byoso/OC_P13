@@ -33,13 +33,25 @@ jobs:
       - run:
           name: Run tests
           command: pytest
+  docker-build-and-push:
+    docker:
+      - image: cimg/python:3.10.2
+    steps:
+      - checkout
+      - run:
+        name: test
+        command: echo 'just a test'
+
 
 # See workflow: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   sample: # This is the name of the workflow
     jobs:
-      - build-and-test:
+      - build-and-test
+      - docker-build-and-push:
         filters:
           branches:
             only:
               - master
+        requires:
+          - build_and_test
