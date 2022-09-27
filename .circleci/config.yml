@@ -11,10 +11,6 @@ jobs:
   build-and-test:
     # Docker executors: https://circleci.com/docs/2.0/executor-types/
     # available CircleCI Docker here: https://circleci.com/developer/images/image/cimg/python
-    filters:
-      branches:
-        only:
-          - master
     docker:
       - image: cimg/python:3.10.2
     steps:
@@ -42,4 +38,8 @@ jobs:
 workflows:
   sample: # This is the name of the workflow
     jobs:
-      - build-and-test
+      - build-and-test:
+        filters:
+          branches:
+            only:
+              - master
