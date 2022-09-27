@@ -41,19 +41,28 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
-          name: test
-          command: echo "just a test"
+          name: Build Docker image
+          command: docker build -t oc-lettings-vf:v1 .
+      - run:
+          name: Dockerhub login
+          command: docker login --username $DOCKERHUB_LOGIN --password $DOCKERHUB_PASSWORD
+      - run:
+          name: Tag docker image
+          command: docker tag oc-lettings-vf:v1 $DOCKERHUB_LOGIN/oc-lettings:$CIRCLE_SHA1
+      - run:
+          name: push image to dockerhub
+          command: docker push $DOCKERHUB_LOGIN/oc-lettings:$CIRCLE_SHA1
 
 
 # See workflow: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  sample: # This is the name of the workflow
+  oc-lettings-deployment: # This is the name of the workflow
     jobs:
       - build-and-test
       - docker-build-and-push:
-          filters:
-            branches:
-              only:
-                - master
+          # filters:
+          #   branches:
+          #     only:
+          #       - master
           requires:
             - build-and-test
