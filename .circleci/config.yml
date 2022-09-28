@@ -60,13 +60,13 @@ jobs:
       - run:
           name: Install heroku CLI
           command: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
-      - run
+      - run:
           name: Login Heroku
           command: HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
-      - run
+      - run:
           name: Heroku push
           command: HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push web
-      - run
+      - run:
           name: Heroku release
           command: HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release web
 
