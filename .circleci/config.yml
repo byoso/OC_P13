@@ -76,21 +76,19 @@ workflows:
       - docker-build-and-push:
           context:
             - circleci_context
-
-          # filters:
-          #   branches:
-          #     only:
-          #       - master
+          filters:
+            branches:
+              only:
+                - master
           requires:
             - build-and-test
       - heroku-push:
           context:
             - circleci_context
-
-          # filters:
-          #   branches:
-          #     only:
-          #       - master
+          filters:
+            branches:
+              only:
+                - master
           requires:
             - build-and-test
             - docker-build-and-push
