@@ -53,14 +53,14 @@ jobs:
           name: push image to dockerhub
           command: docker push $DOCKERHUB_LOGIN/oc-lettings:$CIRCLE_SHA1
   heroku-push:
-    mahcine: true
+    machine: true
     steps:
       - checkout
       - run:
           name: Install heroku CLI
           command: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
       - run:
-          name: Heroku Login, push, release
+          name: Heroku Login push release
           command: |
             HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
             HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a oc-lettings-site web
