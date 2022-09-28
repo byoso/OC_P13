@@ -54,7 +54,7 @@ jobs:
           command: docker push $DOCKERHUB_LOGIN/oc-lettings:$CIRCLE_SHA1
   heroku-push:
     docker:
-      - image: cimg/python:.10.2
+      - image: cimg/python:3.10.2
     steps:
       - checkout
       - run:
