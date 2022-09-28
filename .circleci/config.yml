@@ -52,6 +52,23 @@ jobs:
       - run:
           name: push image to dockerhub
           command: docker push $DOCKERHUB_LOGIN/oc-lettings:$CIRCLE_SHA1
+  heroku-push:
+    docker:
+      - image: cimg/python:.10.2
+    steps:
+      - checkout
+      - run:
+          name: Install heroku CLI
+          command: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+      - run
+          name: Login Heroku
+          command: HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
+      - run
+          name: Heroku push
+          command: HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push web
+      - run
+          name: Heroku release
+          command: HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release web
 
 
 # See workflow: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -69,3 +86,14 @@ workflows:
           #       - master
           requires:
             - build-and-test
+      - heroku-push:
+          context:
+            - circleci_context
+
+          # filters:
+          #   branches:
+          #     only:
+          #       - master
+          requires:
+            - build-and-test
+            - docker-build-and-push
