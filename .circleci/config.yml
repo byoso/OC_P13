@@ -73,6 +73,8 @@ workflows:
   oc-lettings-deployment: # This is the name of the workflow
     jobs:
       - build-and-test
+          context:
+            - circleci_context
       - docker-build-and-push:
           context:
             - circleci_context
