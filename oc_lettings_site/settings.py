@@ -30,8 +30,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# actual secret key stored both by heroku and circleci.
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+if SECRET_KEY is None:
+    SECRET_KEY = "the actual deployment key is stored by heroku"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
