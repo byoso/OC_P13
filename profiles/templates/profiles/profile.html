@@ -1,5 +1,13 @@
+{% extends "_base.html" %}
+
+
+{% block head %}
 <title>{{ profile.user.username }}</title>
-<h1>{{ profile.user.username }}</h1>
+{% endblock head %}
+
+{% block content %}
+
+<h1 class="title">{{ profile.user.username }}</h1>
 <p>First name: {{ profile.user.first_name }}</p>
 <p>Last name: {{ profile.user.last_name }}</p>
 <p>Email: {{ profile.user.email }}</p>
@@ -7,3 +15,4 @@
 <div><a href="{% url 'profiles:index' %}">Back</a></div>
 <div><a href="{% url 'home:index' %}">Home</a></div>
 <div><a href="{% url 'lettings:index' %}">Lettings</a></div>
+{% endblock content %}

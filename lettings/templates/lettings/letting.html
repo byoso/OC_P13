@@ -1,8 +1,16 @@
+{% extends "_base.html" %}
+
+
+{% block head %}
 <title>{{ title }}</title>
-<h1>{{ title }}</h1>
+{% endblock head %}
+
+{% block content %}
+<h1 class="title">{{ title }}</h1>
 <p>{{ address.number }} {{ address.street }}</p>
 <p>{{ address.city }}, {{ address.state }} {{ address.zip_code }}</p>
 <p>{{ address.country_iso_code }}</p>
 <div><a href="{% url 'lettings:index' %}">Back</a></div>
 <div><a href="{% url 'home:index' %}">Home</a></div>
 <div><a href="{% url 'profiles:index' %}">Profiles</a></div>
+{% endblock content %}
