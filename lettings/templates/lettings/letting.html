@@ -5,12 +5,17 @@
 <title>{{ title }}</title>
 {% endblock head %}
 
+
+{% block nav %}
+<div class="button"><a href="{% url 'lettings:index' %}">Back</a></div>
+<div class="button"><a href="{% url 'home:index' %}">Home</a></div>
+<div class="button"><a href="{% url 'profiles:index' %}">Profiles</a></div>
+
+{% endblock nav %}
+
 {% block content %}
 <h1 class="title">{{ title }}</h1>
 <p>{{ address.number }} {{ address.street }}</p>
 <p>{{ address.city }}, {{ address.state }} {{ address.zip_code }}</p>
 <p>{{ address.country_iso_code }}</p>
-<div><a href="{% url 'lettings:index' %}">Back</a></div>
-<div><a href="{% url 'home:index' %}">Home</a></div>
-<div><a href="{% url 'profiles:index' %}">Profiles</a></div>
 {% endblock content %}

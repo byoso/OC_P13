@@ -1,3 +1,11 @@
 .title {
     color:brown;
+    border: 5px solid black;
+    border-radius: 10px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -5,6 +5,14 @@
 <title>Profiles</title>
 {% endblock head %}
 
+
+{% block nav %}
+<div class="button"><a href="{% url 'home:index' %}">Home</a></div>
+<div class="button"><a href="{% url 'lettings:index' %}">Lettings</a></div>
+
+{% endblock nav %}
+
+
 {% block content %}
 <h1 class="title">Profiles</h1>
 {% if profiles_list %}
@@ -20,6 +28,4 @@
 {% else %}
     <p>No profiles are available.</p>
 {% endif %}
-<div><a href="{% url 'home:index' %}">Home</a></div>
-<div><a href="{% url 'lettings:index' %}">Lettings</a></div>
 {% endblock content %}

@@ -5,6 +5,13 @@
 <title>Lettings</title>
 {% endblock head %}
 
+
+{% block nav %}
+<div class="button"><a href="{% url 'home:index' %}">Home</a></div>
+<div class="button"><a href="{% url 'profiles:index' %}">Profiles</a></div>
+
+{% endblock nav %}
+
 {% block content %}
 <h1 class="title">Lettings</h1>
 {% if lettings_list %}
@@ -20,6 +27,4 @@
 {% else %}
     <p>No lettings are available.</p>
 {% endif %}
-<div><a href="{% url 'home:index' %}">Home</a></div>
-<div><a href="{% url 'profiles:index' %}">Profiles</a></div>
 {% endblock content %}

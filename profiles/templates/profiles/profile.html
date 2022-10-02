@@ -5,14 +5,19 @@
 <title>{{ profile.user.username }}</title>
 {% endblock head %}
 
+{% block nav %}
+<div class="button"><a href="{% url 'profiles:index' %}">Back</a></div>
+<div class="button"><a href="{% url 'home:index' %}">Home</a></div>
+<div class="button"><a href="{% url 'lettings:index' %}">Lettings</a></div>
+
+{% endblock nav %}
+
 {% block content %}
+
 
 <h1 class="title">{{ profile.user.username }}</h1>
 <p>First name: {{ profile.user.first_name }}</p>
 <p>Last name: {{ profile.user.last_name }}</p>
 <p>Email: {{ profile.user.email }}</p>
 <p>Favorite city: {{ profile.favorite_city }}</p>
-<div><a href="{% url 'profiles:index' %}">Back</a></div>
-<div><a href="{% url 'home:index' %}">Home</a></div>
-<div><a href="{% url 'lettings:index' %}">Lettings</a></div>
 {% endblock content %}
