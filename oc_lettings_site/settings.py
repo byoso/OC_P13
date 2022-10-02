@@ -35,7 +35,11 @@ if SECRET_KEY is None:
     SECRET_KEY = "the actual deployment key is stored by heroku"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+environment = os.environ.get('ENV')
+if environment is None:
+    DEBUG = True
+if environment == "production":
+    DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
