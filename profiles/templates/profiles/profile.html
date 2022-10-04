@@ -13,11 +13,12 @@
 {% endblock nav %}
 
 {% block content %}
+<article>
+    <h1 class="title">{{ profile.user.username }}</h1>
+    <p>First name: {{ profile.user.first_name }}</p>
+    <p>Last name: {{ profile.user.last_name }}</p>
+    <p>Email: {{ profile.user.email }}</p>
+    <p>Favorite city: {{ profile.favorite_city }}</p>
+</article>
 
-
-<h1 class="title">{{ profile.user.username }}</h1>
-<p>First name: {{ profile.user.first_name }}</p>
-<p>Last name: {{ profile.user.last_name }}</p>
-<p>Email: {{ profile.user.email }}</p>
-<p>Favorite city: {{ profile.favorite_city }}</p>
 {% endblock content %}
